@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "outDir": "./.bin",
+        "allowJs": true,
+        "target": "es2015",
+        "module": "commonjs",
+        "experimentalDecorators": true
+    },
+    "include": [
+        "./api/**/*",
+        "./config/**/*",
+        "./typings/*",
+        "app.ts"
+    ]
+}
