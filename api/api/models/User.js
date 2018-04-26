@@ -36,6 +36,7 @@ module.exports = {
     email: {
       type: 'string',
       unique: true,
+      isEmail: true,
       required: true
     },
     phone: {
@@ -60,6 +61,7 @@ module.exports = {
     },
     avatar: {
       type: 'string',
+      isURL: true,
       allowNull: true
     },
     verify_code: {

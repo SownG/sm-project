@@ -18,6 +18,7 @@ module.exports = {
     email: {
       type: 'string',
       unique: true,
+      isEmail: true,
       required: true
     },
     phone: {
@@ -26,16 +27,27 @@ module.exports = {
       required: true
     },
     logo: {
-      type: 'string'
+      type: 'string',
+      isURL: true,
+      allowNull: true
     },
     background_image: {
-      type: 'string'
+      type: 'string',
+      isURL: true,
+      allowNull: true
     },
     primary_color: {
-      type: 'string'
+      type: 'string',
+      maxLength: 6,
+      allowNull: true,
     },
     description: {
-      type: 'string'
+      type: 'string',
+      allowNull: true
+    },
+    acronym: {
+      type: 'string',
+      allowNull: true
     },
     school_level: {
       type: 'string',

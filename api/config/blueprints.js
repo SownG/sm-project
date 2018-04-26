@@ -37,7 +37,6 @@ module.exports.blueprints = {
   ***************************************************************************/
 
   // shortcuts: true,
-  prefix: `/v${process.env.API_VERSION}`,
 
   parseBlueprintOptions: function (req) {
     // Get the default query options.
@@ -56,7 +55,6 @@ module.exports.blueprints = {
     if (!req.query.populate) {
       queryOptions = _.omit(queryOptions, ['populates'])
     }
-
     return queryOptions;
   }
 };
