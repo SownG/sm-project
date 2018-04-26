@@ -12,14 +12,15 @@ const CryptoService = require('./CryptoService')
 
 // Generates a token from supplied payload
 module.exports.issue = function (user) {
-  const adminExpiration = user.role == 1 ? { expiresIn: 18000 } : { expiresIn: 18000 }
+  // If user is admin (role = 1), token's expiration are 5 hours
+  const expiration = user.role == 1 ? { expiresIn: 18000 } : { expiresIn: '30 days' }
   const payload = {
     user: CryptoService.encrypt((user.id).toString()),
   }
   return jwt.sign(
     payload,
     process.env.JWT_TOKEN_SECRET, // Tokeny Secret that we sign it with
-    adminExpiration 
+    expiration 
   );
 };
 

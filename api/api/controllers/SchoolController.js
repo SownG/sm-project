@@ -31,9 +31,8 @@ module.exports = {
       .intercept(err => {
         return res.serverError(err)
       });
-      // create data for school's admin 
+    // Create data for school's admin 
     const userData = await AuthService.createDefaultAdminUser(school);
-   
 
     // Create user record
     const user = await User.create(userData)
@@ -53,6 +52,6 @@ module.exports = {
     if (user) {
       return res.ok(user);
     }
-    return res.serverError({ message: 'error' })
+    return res.serverError({ message: 'server error' })
   }
 };

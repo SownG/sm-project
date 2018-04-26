@@ -16,7 +16,7 @@ module.exports = {
    * }
    * @param  {} req
    * @param  {} res
-   * @return user infomation and login token
+   * @return login token
    */
   login: async function (req, res) {
     const emailOrPhone = req.param('email_or_phone');
@@ -49,7 +49,6 @@ module.exports = {
           // If user is admin, token's expiration are 5 hours
           let token = JwtService.issue(user);
           return res.json({
-            user: user,
             token: token
           });
         }

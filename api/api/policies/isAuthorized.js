@@ -19,18 +19,18 @@ module.exports = function (req, res, next) {
         token = credentials;
       }
     } else {
-      return res.json(401, { error: 'Format is Authorization: Bearer [token]' });
+      return res.json(401, { message: 'Format is Authorization: Bearer [token]' });
     }
   } else if (req.param('token')) {
     token = req.param('token');
     // We delete the token from param to not mess with blueprints
     delete req.query.token;
   } else {
-    return res.json(401, { error: 'No Authorization header was found' });
+    return res.json(401, { message: 'No Authorization header was found' });
   }
 
   JwtService.verify(token, function (err, token) {
-    if (err) return res.json(401, { error: 'Invalid Token!' });
+    if (err) return res.json(401, { message: 'Invalid Token!' });
     // console.log(decrypt(token.user))
     // sails.models.user.findOne({
     //   id: decrypt(token.user)
