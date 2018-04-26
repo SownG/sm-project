@@ -17,10 +17,12 @@ module.exports = {
     },
     email: {
       type: 'string',
+      unique: true,
       required: true
     },
     phone: {
       type: 'string',
+      unique: true,
       required: true
     },
     logo: {
@@ -35,13 +37,10 @@ module.exports = {
     description: {
       type: 'string'
     },
-    plan: {
-      type: 'string',
-      required: true
-    },
     school_level: {
-      type: 'number',
-      required: true
+      type: 'string',
+      isIn: ['1', '2', '3', '4'],
+      defaultsTo: '4'
     }
   }
 };

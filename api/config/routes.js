@@ -27,7 +27,8 @@ module.exports.routes = {
   '/': {
     view: 'pages/homepage'
   },
-  'post /auth/register' : 'AuthController.register'
+  'post /auth/register': 'AuthController.register',
+  'post /auth/login': 'AuthController.login'
   /*************************************************d**************************
   *                                                                          *
   * More custom routes here...                                               *

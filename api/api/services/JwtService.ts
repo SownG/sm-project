@@ -5,16 +5,21 @@
  * @help        :: See https://github.com/auth0/node-jsonwebtoken & http://sailsjs.org/#!/documentation/concepts/Services
  */
 
-var
-  jwt = require('jsonwebtoken'),
-  tokenSecret = "secretissecet";
+const jwt = require('jsonwebtoken')
+const crypt = require('crypto')
+const tokenSecret = process.env.JWT_TOKEN_SECRET
+const CryptoService = require('./CryptoService')
 
 // Generates a token from supplied payload
-module.exports.issue = function (payload) {
-  console.log(payload)
+module.exports.issue = function (user) {
+  const adminExpiration = user.role == 1 ? { expiresIn: 18000 } : { expiresIn: 18000 }
+  const payload = {
+    user: CryptoService.encrypt((user.id).toString()),
+  }
   return jwt.sign(
     payload,
-    tokenSecret, // Tokeny Secret that we sign it with
+    process.env.JWT_TOKEN_SECRET, // Tokeny Secret that we sign it with
+    adminExpiration 
   );
 };
 

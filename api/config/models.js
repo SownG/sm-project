@@ -67,7 +67,7 @@ module.exports.models = {
   * > https://sailsjs.com/docs/concepts/orm/model-settings#?attributes       *
   *                                                                          *
   ***************************************************************************/
-
+  datastore: 'mysql',
   attributes: {
     created_at: { type: 'ref', autoCreatedAt: true, columnType: 'datetime' },
     updated_at: { type: 'ref', autoUpdatedAt: true, columnType: 'datetime' },

@@ -4,7 +4,6 @@
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-var bcrypt = require('bcrypt');
 
 module.exports = {
   attributes: {
@@ -36,53 +35,40 @@ module.exports = {
     },
     email: {
       type: 'string',
-      unique: true
+      unique: true,
+      required: true
     },
     phone: {
       type: 'string',
-      unique: true
-    },
-    job: {
-      type: 'string'
+      unique: true,
+      required: true
     },
     'identification_number': {
       type: 'string'
     },
-    school_id: {
-      model: 'school'
+    school: {
+      model: 'school',
+      columnName: 'school_id'
     },
-    role_id: {
+    role: {
       model: 'role',
+      columnName: 'role_id'
     },
     is_active: {
       type: 'boolean',
       defaultsTo: false
     },
-    password: {
+    avatar: {
       type: 'string',
-      required: true
+      allowNull: true
+    },
+    verify_code: {
+      type: 'string',
+      allowNull: true
+    },
+    last_login: {
+      type: 'string',
+      allowNull: true
     }
   },
-  // Here we encrypt password before creating a User
-  beforeCreate: function (values, next) {
-    bcrypt.genSalt(10, function (err, salt) {
-      if (err) return next(err);
-      bcrypt.hash(values.password, salt, function (err, hash) {
-        if (err) return next(err);
-        values.password = hash;
-        next();
-      })
-    })
-  },
-
-  comparePassword: function (password, user, cb) {
-    bcrypt.compare(password, password, function (err, match) {
-      if (err) cb(err);
-      if (match) {
-        cb(null, true);
-      } else {
-        cb(err);
-      }
-    })
-  }
 };

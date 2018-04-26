@@ -26,7 +26,10 @@
 // > Note: This is not required in order to lift, but it is a convenient default.
 process.chdir(__dirname);
 
-require('ts-node/register');
+// Load .env file config
+var dotenv = require('dotenv');
+dotenv.load();
+
 
 
 // Attempt to import `sails` dependency, as well as `rc` (for loading `.sailsrc` files).
@@ -35,6 +38,7 @@ var rc;
 try {
   sails = require('sails');
   rc = require('sails/accessible/rc');
+  require('ts-node/register');
 } catch (err) {
   console.error('Encountered an error when attempting to require(\'sails\'):');
   console.error(err.stack);

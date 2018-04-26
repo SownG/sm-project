@@ -40,9 +40,10 @@
     "Promise": true,
     "sails": true,
     "_": true,
-    "async": true
-    // …and any others (e.g. `"Organization": true`)
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    "async": true,
+    "Role": true,
+    "User": true,
+    "School": true
   },
 
   "rules": {
@@ -88,5 +89,4 @@
     "semi-spacing":                 ["warn", {"before":false, "after":true}],
     "semi-style":                   ["warn", "last"]
   }
-
 }
