@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 module.exports = {
   createDefaultAdminUser: async function (school: any ) {
     const adminRoleId = await sails.models.role.findOne({ name: 'Admin' })
@@ -10,7 +12,7 @@ module.exports = {
       type: 'employee',
       email: school.email,
       phone: school.phone,
-      dob: '0000-00-00',
+      dob: moment().format('YYYY-MM-DD'),
       role: adminRoleId.id
     }
   }

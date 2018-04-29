@@ -46,7 +46,6 @@ module.exports = {
         if (!valid) {
           return res.status(401).json({ message: 'invalid email/phone or password' });
         } else {
-          // If user is admin, token's expiration are 5 hours
           let token = JwtService.issue(user);
           return res.json({
             token: token

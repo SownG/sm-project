@@ -39,7 +39,9 @@ module.exports = function (req, res, next) {
     //   req.user = user;
     //   next()
     // })
-    req.user = decrypt(token.user);
+    // --- 26 / 4 / 2018 not inject userId encrypt into jwt payload data, maybe in future.
+    //req.user = decrypt(token.user);
+    req.user = token.user;
     next()
   });
 };

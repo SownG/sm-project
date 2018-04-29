@@ -15,7 +15,9 @@ module.exports.issue = function (user) {
   // If user is admin (role = 1), token's expiration are 5 hours
   const expiration = user.role == 1 ? { expiresIn: 18000 } : { expiresIn: '30 days' }
   const payload = {
-    user: CryptoService.encrypt((user.id).toString()),
+    // --- 26 / 4 / 2018 not inject userId encrypt into jwt payload data, maybe in future.
+    //user: CryptoService.encrypt((user.id).toString())
+    user: user.id
   }
   return jwt.sign(
     payload,
